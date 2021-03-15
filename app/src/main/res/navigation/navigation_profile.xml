@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_profile"
+    app:startDestination="@id/homeFragment3">
+
+    <fragment
+        android:id="@+id/homeFragment3"
+        android:name="com.example.tokoinand.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+</navigation>

@@ -1,5 +1,6 @@
 package com.example.tokoinand.network
 
+import com.example.tokoinand.commonModel.NewsListModel
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
@@ -8,9 +9,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 const val BASE_URL = "https://newsapi.org"
 private val moshi = Moshi.Builder()
@@ -33,5 +37,6 @@ object ApplicationApi{
 }
 
 interface NetworkApiList {
-
+    @GET("/v2/top-headlines")
+    fun getTopHeadlineNewsAsync(@Query("country") country : String, @Query("apiKey") apiKey : String) : Deferred<NewsListModel>
 }
