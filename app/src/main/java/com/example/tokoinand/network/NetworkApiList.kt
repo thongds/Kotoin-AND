@@ -39,4 +39,8 @@ object ApplicationApi{
 interface NetworkApiList {
     @GET("/v2/top-headlines")
     fun getTopHeadlineNewsAsync(@Query("country") country : String, @Query("apiKey") apiKey : String) : Deferred<NewsListModel>
+    @GET("/v2/everything?sortBy=popularity")
+    fun getNewsByCategoryAsync(@Query("q") category : String,
+                               @Query("from") from : String,
+                               @Query("apiKey") apiKey : String): Deferred<NewsListModel>
 }

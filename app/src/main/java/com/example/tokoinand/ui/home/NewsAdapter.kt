@@ -45,6 +45,7 @@ class NewsAdapter(val fragment : Fragment, private val actionId : Int) :ListAdap
                 fragment.findNavController().navigate(actionId,bundle)
             }
         }
+        //prevent duplicate image when network's slow state
         fun cleanAsyncData(){
             binding.thumb.setImageBitmap(BitmapFactory.decodeResource(context.resources,R.drawable.default_thumb))
         }

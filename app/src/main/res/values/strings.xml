@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TokoinAnd</string>
     <string name="title_home">Home</string>
-    <string name="custom_news">Custom</string>
+    <string name="custom_news">Custom News</string>
     <string name="title_profile">Profile</string>
     <string name="hint_user_name"><i>input your user name here ...</i></string>
     <string name="hint_password"><i>input your password here ...</i></string>
@@ -11,4 +11,10 @@
     <string name="login">Login</string>
     <string name="create_password">Create account</string>
     <string name="user_name">User Name</string>
+    <string-array name="news_array">
+        <item>bitcoin</item>
+        <item>apple</item>
+        <item>earthquake</item>
+        <item>animal</item>
+    </string-array>
 </resources>

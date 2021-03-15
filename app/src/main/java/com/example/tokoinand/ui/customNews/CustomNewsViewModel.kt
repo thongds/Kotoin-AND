@@ -8,17 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.tokoinand.DefaultRepository
 import com.example.tokoinand.commonModel.NewsListModel
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CustomNewsViewModel  @ViewModelInject constructor(private val defaultRepository: DefaultRepository) : ViewModel() {
     private val _newListData = MutableLiveData<NewsListModel>()
     val newListData : LiveData<NewsListModel>
         get() = _newListData
-    init {
-        requestTopNews()
-    }
-    fun requestTopNews(){
+    fun requestNewsByCategory(category : String){
         viewModelScope.launch {
-            _newListData.value =  defaultRepository.requestTopHeadlineNews("us")
+            val today = SimpleDateFormat("yyyy-MM-dd").format(Date())
+            _newListData.value =  defaultRepository.getNewsByCategory(category,today)
         }
     }
 }

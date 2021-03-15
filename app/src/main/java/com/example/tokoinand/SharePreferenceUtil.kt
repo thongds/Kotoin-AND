@@ -8,6 +8,7 @@ import com.squareup.moshi.Moshi
 
 const val USER_PROFILE = "USER_PROFILE"
 const val SHARE_KEY  = "SHARE_KEY"
+const val CURRENT_CATEGORY  = "CURRENT_CATEGORY"
 class SharePreferenceUtil constructor(private val activity: Activity) {
     fun saveProfile(userProfile: UserProfile?){
         val moshi = Moshi.Builder().build()
@@ -27,5 +28,19 @@ class SharePreferenceUtil constructor(private val activity: Activity) {
         val jsonAdapter = moshi.adapter(UserProfile::class.java)
         return jsonAdapter.fromJson(profileString)
     }
-
+    fun getCategory() : String {
+        val sharedPref = activity.applicationContext.getSharedPreferences(SHARE_KEY,Context.MODE_PRIVATE)
+        val langCodeString = sharedPref.getString(CURRENT_CATEGORY,"")
+        if (langCodeString.isNullOrBlank()) return ""
+        return langCodeString
+    }
+    fun saveCategory(langCode : String) {
+        activity.applicationContext.let {
+            val share = it.getSharedPreferences(SHARE_KEY,Context.MODE_PRIVATE)
+            with(share.edit()){
+                putString(CURRENT_CATEGORY,langCode)
+                commit()
+            }
+        }
+    }
 }

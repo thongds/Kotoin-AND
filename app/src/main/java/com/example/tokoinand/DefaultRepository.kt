@@ -20,4 +20,7 @@ class DefaultRepository @Inject constructor(private val networkApiList: NetworkA
     suspend fun insertUser(userName: String,password: String){
         return dao.insertUser(UserEntry(userName = userName,password = password))
     }
+    suspend fun getNewsByCategory(category: String,from : String) : NewsListModel{
+        return networkApiList.getNewsByCategoryAsync(category,from, API_KEY).await()
+    }
 }
