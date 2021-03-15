@@ -14,6 +14,10 @@ import com.bumptech.glide.Glide
 import com.example.tokoinand.R
 import com.example.tokoinand.commonModel.ArticleItem
 import com.example.tokoinand.databinding.ItemHomeAdapterLayoutBinding
+import com.example.tokoinand.ui.newsDetail.NEWS_CONTENT
+import com.example.tokoinand.ui.newsDetail.NEWS_LINK
+import com.example.tokoinand.ui.newsDetail.NEWS_LINK_THUMB
+import com.example.tokoinand.ui.newsDetail.NEWS_TITLE
 
 class NewsAdapter(val fragment : Fragment, private val actionId : Int) :ListAdapter<ArticleItem, NewsAdapter.ViewHolder>(ArticleDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,7 +36,14 @@ class NewsAdapter(val fragment : Fragment, private val actionId : Int) :ListAdap
                 .into(binding.thumb)
             binding.title.text = articleItem.title
             binding.descript.text = articleItem.description
-
+            binding.cardHolder.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString(NEWS_LINK_THUMB,articleItem.urlToImage)
+                bundle.putString(NEWS_LINK,articleItem.url)
+                bundle.putString(NEWS_TITLE,articleItem.title)
+                bundle.putString(NEWS_CONTENT,articleItem.content)
+                fragment.findNavController().navigate(actionId,bundle)
+            }
         }
         fun cleanAsyncData(){
             binding.thumb.setImageBitmap(BitmapFactory.decodeResource(context.resources,R.drawable.default_thumb))

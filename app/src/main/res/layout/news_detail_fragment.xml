@@ -1,0 +1,65 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:padding="10dp"
+            android:id="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="24sp"
+            android:textColor="#000000"
+            android:textAlignment="textStart"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/thumb"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="23dp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_width="0dp"
+            android:layout_height="151dp"
+            android:src="@drawable/default_thumb"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:padding="10dp"
+            android:id="@+id/url"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="23dp"
+            app:layout_constraintTop_toBottomOf="@id/thumb"
+            android:textSize="16sp"
+            android:textColor="#0d3ce2"
+            android:textAlignment="textStart"
+            android:textStyle="italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/url"
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:textColor="#6d6d6f"
+            android:textAlignment="textStart"
+            android:textStyle="italic"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
