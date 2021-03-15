@@ -15,7 +15,7 @@ class DefaultRepository @Inject constructor(private val networkApiList: NetworkA
         return dao.getUser(userName,password)
     }
     suspend fun getUserByName(userName : String) : UserEntry?{
-        return dao.getUserByEmail(userName)
+        return dao.getUserByName(userName)
     }
     suspend fun insertUser(userName: String,password: String){
         return dao.insertUser(UserEntry(userName = userName,password = password))
