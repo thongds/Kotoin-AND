@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -31,6 +32,11 @@ class HomeFragment : Fragment() {
             val newHolder = holder as NewsAdapter.ViewHolder
             newHolder.cleanAsyncData()
         }
+        viewModel.networkError.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+            }
+        })
         viewModel.newListData.observe(viewLifecycleOwner, Observer {
             binding.swipeRefresh.isRefreshing = false
             adapter.submitList(it.articles)

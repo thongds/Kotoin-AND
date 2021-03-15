@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -35,6 +36,11 @@ class CustomNewsFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.requestNewsByCategory(SharePreferenceUtil(requireActivity()).getCategory())
         }
+        viewModel.networkError.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+            }
+        })
         val adapter = NewsAdapter(this,CustomNewsFragmentDirections.actionCustomNewsFragmentToNavigationNewsDetail().actionId)
         binding.rycHome.adapter = adapter
         binding.rycHome.setRecyclerListener { holder ->

@@ -8,9 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.tokoinand.DefaultRepository
 import com.example.tokoinand.commonModel.NewsListModel
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class HomeViewModel @ViewModelInject constructor(private val defaultRepository: DefaultRepository) : ViewModel() {
     private val _newListData = MutableLiveData<NewsListModel>()
+    val networkError = MutableLiveData<String?>()
     val newListData : LiveData<NewsListModel>
         get() = _newListData
     init {
@@ -18,7 +20,11 @@ class HomeViewModel @ViewModelInject constructor(private val defaultRepository: 
     }
     fun requestTopNews(){
         viewModelScope.launch {
-            _newListData.value =  defaultRepository.requestTopHeadlineNews("us")
+            try {
+                _newListData.value =  defaultRepository.requestTopHeadlineNews("us")
+            }catch (err : Exception){
+                networkError.value = "Network error!"
+            }
         }
     }
 }
