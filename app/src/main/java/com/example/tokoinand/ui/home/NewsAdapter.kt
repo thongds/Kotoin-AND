@@ -34,8 +34,9 @@ class NewsAdapter(val fragment : Fragment, private val actionId : Int) :ListAdap
             Glide.with(context).load(articleItem.urlToImage).placeholder(context.resources.getDrawable(
                 R.drawable.default_thumb,null))
                 .into(binding.thumb)
-            binding.title.text = articleItem.title
-            binding.descript.text = articleItem.description
+            binding.item = articleItem
+//            binding.title.text = articleItem.title
+//            binding.descript.text = articleItem.description
             binding.cardHolder.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(NEWS_LINK_THUMB,articleItem.urlToImage)
