@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.tokoinand.R
@@ -50,6 +51,13 @@ class RegisterFragment : Fragment() {
         binding.registerBtn.setOnClickListener {
             viewModel.createUser(requireActivity(),binding.passwordEdit.text.toString(),binding.confirmPassword.text.toString(),binding.userNameEditText.text.toString())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val active = requireActivity() as AppCompatActivity
+        active.supportActionBar?.show()
+        active.supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
 }

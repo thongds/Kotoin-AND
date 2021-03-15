@@ -1,7 +1,6 @@
 package com.example.tokoinand.ui.customNews
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,15 +24,18 @@ class CustomNewsFragment : Fragment() {
 
     lateinit var viewModel: CustomNewsViewModel
     lateinit var binding: CustomNewsFragmentBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(CustomNewsViewModel::class.java)
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        viewModel = ViewModelProvider(this).get(CustomNewsViewModel::class.java)
         binding = CustomNewsFragmentBinding.inflate(LayoutInflater.from(requireContext()), container, false)
         binding.rycHome.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.requestNewsByCategory(SharePreferenceUtil(requireActivity()).getCategory())
         }
-        val adapter = NewsAdapter(this,CustomNewsFragmentDirections.actionCustomNewsFragmentToNewsDetailFragment2().actionId)
+        val adapter = NewsAdapter(this,CustomNewsFragmentDirections.actionCustomNewsFragmentToNavigationNewsDetail().actionId)
         binding.rycHome.adapter = adapter
         binding.rycHome.setRecyclerListener { holder ->
             val newHolder = holder as NewsAdapter.ViewHolder
@@ -74,6 +76,7 @@ class CustomNewsFragment : Fragment() {
         }
         return binding.root
     }
+
     override fun onResume() {
         super.onResume()
         val active = requireActivity() as AppCompatActivity

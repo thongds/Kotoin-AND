@@ -16,8 +16,9 @@ class CustomNewsViewModel  @ViewModelInject constructor(private val defaultRepos
     val newListData : LiveData<NewsListModel>
         get() = _newListData
     fun requestNewsByCategory(category : String){
+
         viewModelScope.launch {
-            val today = SimpleDateFormat("yyyy-MM-dd").format(Date())
+            val today = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(Date())
             _newListData.value =  defaultRepository.getNewsByCategory(category,today)
         }
     }

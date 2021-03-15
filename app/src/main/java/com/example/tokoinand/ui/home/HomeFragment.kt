@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.requestTopNews()
         }
-        val adapter = NewsAdapter(this,HomeFragmentDirections.actionHomeFragmentToNewsDetailFragment().actionId)
+        val adapter = NewsAdapter(this,HomeFragmentDirections.actionHomeFragmentToNavigationNewsDetail().actionId)
         binding.rycHome.adapter = adapter
         binding.rycHome.setRecyclerListener { holder ->
             val newHolder = holder as NewsAdapter.ViewHolder

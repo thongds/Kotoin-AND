@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.tokoinand.R
 import com.example.tokoinand.databinding.NewsDetailFragmentBinding
@@ -34,8 +35,11 @@ class NewsDetailFragment : Fragment() {
         newsTitle?.let {
             binding.title.text = it
         }
-        newsLink?.let {
-            binding.url.text = it
+        newsLink?.let {link ->
+            binding.url.text = link
+            binding.url.setOnClickListener {
+                findNavController().navigate(NewsDetailFragmentDirections.actionNewsDetailFragment3ToWebviewFragment(link))
+            }
         }
         newLinkThumb?.let {
             Glide.with(requireContext()).load(it)

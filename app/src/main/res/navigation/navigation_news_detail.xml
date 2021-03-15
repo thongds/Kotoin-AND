@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_news_detail"
+    app:startDestination="@id/newsDetailFragment3">
+
+    <fragment
+        android:id="@+id/newsDetailFragment3"
+        android:name="com.example.tokoinand.ui.newsDetail.NewsDetailFragment"
+        android:label="NewsDetailFragment" >
+        <action
+            android:id="@+id/action_newsDetailFragment3_to_webviewFragment"
+            app:destination="@id/webviewFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/keep_stay"
+            app:popEnterAnim="@anim/keep_stay"
+            app:popExitAnim="@anim/slide_out_up" />
+    </fragment>
+    <fragment
+        android:id="@+id/webviewFragment"
+        android:name="com.example.tokoinand.ui.newsDetail.WebviewFragment"
+        android:label="webview_fragment"
+        tools:layout="@layout/webview_fragment" >
+        <argument
+            android:name="link"
+            app:argType="string" />
+    </fragment>
+</navigation>

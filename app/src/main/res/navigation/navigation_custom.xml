@@ -8,15 +8,12 @@
         android:name="com.example.tokoinand.ui.customNews.CustomNewsFragment"
         android:label="CustomNewsFragment" >
         <action
-            android:id="@+id/action_customNewsFragment_to_newsDetailFragment2"
-            app:destination="@id/newsDetailFragment2"
+            android:id="@+id/action_customNewsFragment_to_navigation_news_detail"
+            app:destination="@id/navigation_news_detail"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/keep_stay"
             app:popEnterAnim="@anim/keep_stay"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-    <fragment
-        android:id="@+id/newsDetailFragment2"
-        android:name="com.example.tokoinand.ui.newsDetail.NewsDetailFragment"
-        android:label="NewsDetailFragment" />
+    <include app:graph="@navigation/navigation_news_detail" />
 </navigation>
