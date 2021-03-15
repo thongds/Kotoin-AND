@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="custom_news">Custom</string>
     <string name="title_profile">Profile</string>
-    <string name="hint_email"><i>input your email here ...</i></string>
+    <string name="hint_user_name"><i>input your user name here ...</i></string>
     <string name="hint_password"><i>input your password here ...</i></string>
     <string name="register">Register</string>
     <string name="confirm_password">Confirm password</string>

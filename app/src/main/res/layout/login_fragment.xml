@@ -66,10 +66,11 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
-                    android:hint="@string/hint_email"
+                    android:hint="@string/hint_user_name"
                     android:textColorHint="@color/gray"
-                    android:id="@+id/emailEdit"
+                    android:id="@+id/userNameEditText"
                     android:layout_marginStart="17dp"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginEnd="21dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -117,6 +118,7 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
+                    android:textColor="@color/black"
                     android:hint="@string/hint_password"
                     android:textColorHint="@color/gray"
                     android:inputType="textPassword"

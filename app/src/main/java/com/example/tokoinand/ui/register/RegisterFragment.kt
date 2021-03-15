@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.tokoinand.R
+import com.example.tokoinand.SharePreferenceUtil
 import com.example.tokoinand.databinding.RegisterFragmentBinding
+import com.example.tokoinand.ui.profile.UserProfile
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,11 +42,13 @@ class RegisterFragment : Fragment() {
         })
         viewModel.createStatus.observe(viewLifecycleOwner, Observer {
             it?.let {
-
+                if (it){
+                    findNavController().popBackStack()
+                }
             }
         })
         binding.registerBtn.setOnClickListener {
-            viewModel.createUser(binding.passwordEdit.text.toString(),binding.confirmPassword.text.toString(),binding.userNameEditText.text.toString())
+            viewModel.createUser(requireActivity(),binding.passwordEdit.text.toString(),binding.confirmPassword.text.toString(),binding.userNameEditText.text.toString())
         }
     }
 
