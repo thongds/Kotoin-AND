@@ -58,6 +58,7 @@ class RegisterFragment : Fragment() {
         val active = requireActivity() as AppCompatActivity
         active.supportActionBar?.show()
         active.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        active.supportActionBar?.title = "Back"
     }
 
 }

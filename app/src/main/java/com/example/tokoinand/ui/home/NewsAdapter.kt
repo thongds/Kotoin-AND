@@ -35,8 +35,6 @@ class NewsAdapter(val fragment : Fragment, private val actionId : Int) :ListAdap
                 R.drawable.default_thumb,null))
                 .into(binding.thumb)
             binding.item = articleItem
-//            binding.title.text = articleItem.title
-//            binding.descript.text = articleItem.description
             binding.cardHolder.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString(NEWS_LINK_THUMB,articleItem.urlToImage)
