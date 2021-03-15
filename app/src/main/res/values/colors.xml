@@ -6,5 +6,22 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="gray">#9C9C9C</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorApp">#FF000000</color>
+
+    <color name="colorAppAlpha">#1B244A</color>
+    <color name="colorAppAlpha50">#66141A32</color>
+    <color name="textColorApp">#FF9800</color>
+    <color name="more">#3F51B5</color>
+    <color name="red">#990719</color>
+    <color name="keyboardColor">#FFFFFF</color>
+    <color name="phrase">#2196F3</color>
+    <color name="blue">#3F51B5</color>
+    <color name="greenDark">#417505</color>
+    <color name="button_green_dark">#7AAB56</color>
+    <color name="backgroundGreenOpacity">#D6DCDB</color>
 </resources>
