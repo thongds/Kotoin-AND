@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.tokoinand.DefaultRepository
 import com.example.tokoinand.SharePreferenceUtil
 import com.example.tokoinand.ui.profile.UserProfile
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RegisterViewModel @ViewModelInject constructor(private val defaultRepository: DefaultRepository) : ViewModel() {
@@ -30,7 +31,7 @@ class RegisterViewModel @ViewModelInject constructor(private val defaultReposito
             message.value = "User Name can't blank"
             return
         }
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val userEntry = defaultRepository.getUserByName(userName)
             if (userEntry != null){
                 message.value = "User Name already exists"
