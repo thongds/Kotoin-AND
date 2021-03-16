@@ -15,7 +15,7 @@ class LoginViewModel @ViewModelInject constructor(val defaultRepository: Default
     var message = MutableLiveData<String?>()
     var loginStatus = MutableLiveData<Boolean?>()
     fun login(context : Context, password: String, userName: String){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch{
             val userEntry = defaultRepository.getUser(userName,password)
             if (userEntry == null){
                 message.value = "User and password didn't found"

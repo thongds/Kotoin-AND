@@ -30,7 +30,7 @@ class RegisterViewModel @ViewModelInject constructor(private val defaultReposito
             message.value = "User Name can't blank"
             return
         }
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val userEntry = defaultRepository.getUserByName(userName)
             if (userEntry != null){
                 message.value = "User Name already exists"

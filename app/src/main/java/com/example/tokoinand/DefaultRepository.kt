@@ -4,6 +4,8 @@ import com.example.tokoinand.commonModel.NewsListModel
 import com.example.tokoinand.network.NetworkApiList
 import com.example.tokoinand.room.TOKOINDao
 import com.example.tokoinand.room.UserEntry
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 const val API_KEY = "7392f4421fb24a7dbfe8e09a79c272e4"
@@ -12,13 +14,19 @@ class DefaultRepository @Inject constructor(private val networkApiList: NetworkA
         return networkApiList.getTopHeadlineNewsAsync(countryCode, API_KEY).await()
     }
     suspend fun getUser(userName : String,password : String) : UserEntry?{
-        return dao.getUser(userName,password)
+        return withContext(Dispatchers.IO){
+             dao.getUser(userName,password)
+        }
     }
     suspend fun getUserByName(userName : String) : UserEntry?{
-        return dao.getUserByName(userName)
+        return withContext(Dispatchers.IO){
+             dao.getUserByName(userName)
+        }
     }
     suspend fun insertUser(userName: String,password: String){
-        return dao.insertUser(UserEntry(userName = userName,password = password))
+        withContext(Dispatchers.IO){
+            dao.insertUser(UserEntry(userName = userName,password = password))
+        }
     }
     suspend fun getNewsByCategory(category: String,from : String) : NewsListModel{
         return networkApiList.getNewsByCategoryAsync(category,from, API_KEY).await()
