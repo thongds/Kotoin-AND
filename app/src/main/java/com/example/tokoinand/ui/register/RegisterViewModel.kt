@@ -1,6 +1,5 @@
 package com.example.tokoinand.ui.register
 
-import android.app.Activity
 import android.content.Context
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

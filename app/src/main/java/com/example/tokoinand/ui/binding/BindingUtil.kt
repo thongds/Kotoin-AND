@@ -10,9 +10,8 @@ import java.util.*
 fun TextView.formatUTCTimer(utcTime : String?){
     text = formatTime(utcTime)
 }
+// convert UTC time to local time
 fun formatTime(timer: String?) : String{
-    if (timer == null)
-        return ""
     return try {
         val utcFormat =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'",Locale.ROOT)
         val date = utcFormat.parse(timer)
