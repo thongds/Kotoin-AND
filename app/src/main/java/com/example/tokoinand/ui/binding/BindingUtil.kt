@@ -15,9 +15,8 @@ fun formatTime(timer: String?) : String{
         return ""
     return try {
         val utcFormat =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'",Locale.ROOT)
-        utcFormat.timeZone = TimeZone.getTimeZone("UTC")
         val date = utcFormat.parse(timer)
-        SimpleDateFormat("HH:mm:ss yyyy-MM-dd", Locale.ROOT).format(date)
+        SimpleDateFormat("HH:mm:ss yyyy-MM-dd", Locale.US).format(date)
     }catch (exception : Exception){
         ""
     }

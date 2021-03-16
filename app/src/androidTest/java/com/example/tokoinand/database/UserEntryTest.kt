@@ -37,7 +37,24 @@ class UserEntryTest{
         val userFromDb = database.databaseDao.getUserByName(userName)
         Assert.assertThat(userFromDb!!.userName, CoreMatchers.`is`(userName))
     }
-
+    @Test
+    fun insertUserEmpty() = runBlockingTest {
+        val userName = ""
+        val password = "123456"
+        val user = UserEntry(userName = userName,password = password)
+        database.databaseDao.insertUser(user)
+        val userFromDb = database.databaseDao.getUserByName(userName)
+        Assert.assertThat(userFromDb!!.userName, CoreMatchers.`is`(userName))
+    }
+    @Test
+    fun insertUserPasswordEmpty() = runBlockingTest {
+        val userName = "thongds"
+        val password = ""
+        val user = UserEntry(userName = userName,password = password)
+        database.databaseDao.insertUser(user)
+        val userFromDb = database.databaseDao.getUserByName(userName)
+        Assert.assertThat(userFromDb!!.password, CoreMatchers.`is`(password))
+    }
     @After
     fun closeDb() = database.close()
 }
