@@ -7,6 +7,10 @@
    - [x] **MVVM & Android components**
    - [x] **Navigation component**
    - [x] **Dependency injection(Hilt)**
+- ##  Third party
+   - [x] **Retrofit(use to request network -> from google)**
+   - [x] **Glide(use to request and cache image -> from facebook)**
+   - [x] **Stetho(use to monitor and debug network -> from facebook)**
 - ##  Unit Test
 - [x] **Test Database**
 - [x] **Test Register and login**
